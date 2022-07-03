@@ -1,0 +1,6 @@
+{
+    "require": {
+        "laravel/ui": "^3.4",
+        "laravel/sanctum": "^2.15"
+    }
+}
