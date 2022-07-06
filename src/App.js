@@ -38,17 +38,9 @@ function App() {
           <Route  path={"/403"} component={Page403} />
           <Route  path={"/404"} component={Page404} />
 
-          {/** 
           <Route exact path={"/login"} component={Login} />
           <Route exact path={"/register"} component={Register} />
-          */}
-          <Route path={"/login"}> {/** when logged in, we can not see login page */}
-            {localStorage.getItem('auth_token') ? <Redirect to='/' /> : <Login />}
-          </Route>
-          <Route path={"/register"}> {/** when logged in, we can not see register page */}
-            {localStorage.getItem('auth_token') ? <Redirect to='/' /> : <Register />}
-          </Route>
-
+         
           {/** <Route path='/admin' name="Admin" render={(props) => <MasterLayout {...props} />} />*/}
           <AdminPrivateRoute path='/admin' name="Admin"/> {/** user did not go in admin panel (proctected)*/}
 
@@ -60,4 +52,11 @@ function App() {
 
 export default App;
 
-
+/*
+<Route path={"/login"}>  //when logged in, we can not see login page 
+{localStorage.getItem('auth_token') ? <Redirect to='/' /> : <Login />}
+</Route>
+<Route path={"/register"}>  //when logged in, we can not see register page 
+{localStorage.getItem('auth_token') ? <Redirect to='/' /> : <Register />}
+</Route>
+*/

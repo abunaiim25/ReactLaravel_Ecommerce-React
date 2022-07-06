@@ -3,19 +3,22 @@ import React from 'react';
 import { useEffect } from 'react';
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
+import swal from 'sweetalert';
 
 
 
 const ViewCategory = () => {
+  document.title = "View Category";
 
   const [loading, setLoading] = useState(true);
   const [categorylist, setCategorylist] = useState([]);
 
-  useEffect(() => {
 
+  //===========View Data =====================
+  useEffect(() => {
     axios.get(`/api/view-category`).then(res => {
       //console.log(res.data.category)
-      if (res.status === 200) {
+      if (res.data.status === 200) {
         setCategorylist(res.data.category)
       }
       setLoading(false);
@@ -37,12 +40,31 @@ const ViewCategory = () => {
             <td>{item.slug}</td>
             <td>{item.status}</td>
             <td><Link to={`edit-category/${item.id}`} className="btn btn-success btn-sm ">Edit</Link></td>
-            <td> <button type='button' className='btn btn-danger btn-sm'>Delete</button> </td>
+            <td> <button type='button' onClick={(e)=>deleteCategory(e, item.id)} className='btn btn-danger btn-sm'>Delete</button> </td>
           </tr>
         )
       })
   }
 
+  //===========Delete Data By Id=====================
+  const deleteCategory = (e, id) => {
+    e.preventDefault();
+
+    const thisClicked = e.currentTarget;
+    thisClicked.innerText = "Deleting";
+
+    axios.delete(`/api/delete-category/${id}`).then(res => {
+      if (res.data.status === 200) {
+        swal("Success", res.data.message, "success");
+        thisClicked.closest("tr").remove();
+      }
+      else if (res.data.status === 404) {
+          swal("Error", res.data.message, "error");
+          thisClicked.innerText = "Delete";
+      }
+      setLoading(false);
+  });
+  }
 
 
   return (

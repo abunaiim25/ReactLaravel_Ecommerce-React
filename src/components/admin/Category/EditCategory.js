@@ -19,7 +19,7 @@ const EditCategory = (props) => {
         setCategory({ ...categoryInput, [e.target.name]: e.target.value });
     }
 
-    //========view data from Database==========
+    //========view data from Database By Id==========
     const category_id = props.match.params.id;
     useEffect(() => {
         axios.get(`/api/edit-category/${category_id}`).then(res => {

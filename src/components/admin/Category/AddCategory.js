@@ -5,6 +5,7 @@ import swal from 'sweetalert';
 import { Link } from 'react-router-dom';
 
 const AddCategory = () => {
+    document.title = "Add Category";
 
     const history = useHistory();
     const [categoryInput, setCategory] = useState({
@@ -63,11 +64,11 @@ const AddCategory = () => {
         <>
             <div className="container-fluid px-4">
 
-            <h1 class="mt-4">Category</h1>
-        <ol class="breadcrumb mb-4">
-          <li class="breadcrumb-item"><Link className='link' to={'/admin/dashboard'}>Dashboard</Link></li>
-          <li class="breadcrumb-item active">Add Category</li>
-        </ol>
+                <h1 class="mt-4">Category</h1>
+                <ol class="breadcrumb mb-4">
+                    <li class="breadcrumb-item"><Link className='link' to={'/admin/dashboard'}>Dashboard</Link></li>
+                    <li class="breadcrumb-item active">Add Category</li>
+                </ol>
 
                 {/**=====Required======*/}
                 {

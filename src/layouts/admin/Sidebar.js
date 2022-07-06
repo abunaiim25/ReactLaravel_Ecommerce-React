@@ -30,6 +30,22 @@ const Sidebar = () => {
                         {/**=========Group============ */}
 
 
+                        {/**=========Group============ */}
+                        <Link className="nav-link collapsed" to="#" data-bs-toggle="collapse" data-bs-target="#product" aria-expanded="false" aria-controls="product">
+                            <div className="sb-nav-link-icon"><i class="fa-solid fa-align-left"></i></div>
+                            Product
+                            <div className="sb-sidenav-collapse-arrow"><i className="fas fa-angle-down"></i></div>
+                        </Link>
+                        <div className="collapse" id="product" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
+                            <nav className="sb-sidenav-menu-nested nav">
+                                <Link className="nav-link" to="/admin/add-product">Add Product</Link>
+
+                                <Link className="nav-link" to="/admin/view-product">View Product</Link>
+                            </nav>
+                        </div>
+                        {/**=========Group============ */}
+
+
                         <Link className="nav-link" to="/admin/profile">
                             <div className="sb-nav-link-icon"><i className="fas fa-tachometer-alt"></i></div>
                             Profile

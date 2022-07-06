@@ -1,3 +1,4 @@
+//connect with (App.js)
 import axios from 'axios'
 import React from 'react'
 import { useState, useEffect } from 'react'
@@ -56,7 +57,7 @@ function AdminPrivateRoute({ ...rest }) {
     if (Loading)//Loading 3
     {
         return <div className=''>
-            Loading...
+          <h4>Loading...</h4>  
         </div>
     }
 
