@@ -65,7 +65,15 @@ const NavBar = () => {
                             </li>
 
                             <li className="nav-item">
-                                <Link className="nav-link " aria-current="page" to="#">Collection</Link>
+                                <Link className="nav-link " aria-current="page" to="/about">About</Link>
+                            </li>
+
+                            <li className="nav-item">
+                                <Link className="nav-link " aria-current="page" to="/contact">Contact</Link>
+                            </li>
+
+                            <li className="nav-item">
+                                <Link className="nav-link " aria-current="page" to="/collections">Collection</Link>
                             </li>
 
                             {/** login register logout */}

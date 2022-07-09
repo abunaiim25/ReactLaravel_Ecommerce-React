@@ -1,14 +1,14 @@
+/** 3 */
 import React from 'react';
 import { Route, Switch, Redirect } from 'react-router-dom';
 import '../../assets/admin/css/styles.css';
 import '../../assets/admin/js/scripts.js';
 import Footer from './Footer';
-
 import Sidebar from "./Sidebar";
-import Routes from "../../routes/Routes"; //Router -> MasterLayout -> App
+import AdminRouteList from "../../routes/AdminRouteList"; //Router -> MasterLayout -> App
 import NavBar from './NavBar';
 
-const MasterLayout = () => {
+const AdminLayout = () => {
     return (
         <>
             <div className='sb-nav-fixed'>
@@ -28,7 +28,7 @@ const MasterLayout = () => {
                         <main >
 
                             <Switch>
-                                {Routes.map((route, index) => {
+                                {AdminRouteList.map((route, index) => {
                                         return (
                                             route.component && (
                                                 <Route
@@ -58,4 +58,4 @@ const MasterLayout = () => {
     )
 }
 
-export default MasterLayout
+export default AdminLayout

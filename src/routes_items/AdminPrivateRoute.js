@@ -1,10 +1,10 @@
-//connect with (App.js)
+/** 2 */
 import axios from 'axios'
 import React from 'react'
 import { useState, useEffect } from 'react'
 import { Redirect, Route, useHistory } from 'react-router-dom'
 import swal from 'sweetalert'
-import MasterLayout from './layouts/admin/MasterLayout'
+import AdminLayout from '../layouts/admin/AdminLayout'
 
 
 function AdminPrivateRoute({ ...rest }) {
@@ -25,6 +25,7 @@ function AdminPrivateRoute({ ...rest }) {
             setAuthenticated(false);
         };
     }, []);
+    
     //without login, if anyone want to go admin panel, they see blank page or 401 error. for that we write this code.
     axios.interceptors.response.use(undefined, function axiosRetryInterceptor(err) {
         if (err.response.status === 401) {
@@ -67,7 +68,7 @@ function AdminPrivateRoute({ ...rest }) {
         <Route {...rest}
             render={({ props, location }) =>
                 Authenticated ?
-                    (<MasterLayout {...props} />) :
+                    (<AdminLayout {...props} />) :
                     (<Redirect to={{ pathname: "/login", state: { from: location } }} />)//when user want to go admin page, then login page came here
             }
         />
