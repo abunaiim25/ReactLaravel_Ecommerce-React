@@ -13,6 +13,7 @@ const ProductDetails = (props) => {
     const history = useHistory();
     const [loading, setLoading] = useState(true);//loading
     const [productList, setProduct] = useState([]);
+    const [quentity, setQuentity] = useState(1);//quentity
 
 
     //===========View Get Data =====================
@@ -42,6 +43,43 @@ const ProductDetails = (props) => {
     }, [props.match.params.category, props.match.params.product, history]);
 
 
+    //quentity
+    const handleDecrement = () => {
+        if (quentity > 1) {
+            setQuentity(prevCount => prevCount - 1);
+        }
+    }
+    const handleIncrement = () => {
+        if (quentity < 10) {
+            setQuentity(prevCount => prevCount + 1);
+        }
+    }
+
+    //AddToCart
+    const submitAddToCart = (e) => {
+        e.preventDefault();
+
+        const data = {
+            product_id: productList.id,
+            product_qty: quentity,
+        }
+        //post
+        axios.post(`/api/add-to-cart`, data).then(res => {
+            if (res.data.status === 201) {//Added to Cart Successfully
+                swal("Success", res.data.message, "success");
+                //history.push('');
+            }
+            else if (res.data.status === 409) {// Already Added to Cart
+                swal("Success", res.data.message, "success");
+            }
+            else if (res.data.status === 401) {//Login to Add to Cart
+                swal("Warning", res.data.message, "warning");
+            }
+            else if (res.data.status === 404) {//Product Not Found
+                swal("Warning", res.data.message, "warning");
+            }
+        });
+    }
 
 
 
@@ -58,23 +96,23 @@ const ProductDetails = (props) => {
                     <div className="row">
                         <div className="col-md-3 mt-3">
                             <div className="input-group">
-                                <button type='button' className='input-group-text'>-</button>
-                                <input type="text" className='form-control text-center'  />
-                                <button type='button' className='input-group-text'>+</button>
+                                <button type='button' onClick={handleDecrement} className='input-group-text'>-</button>
+                                <div type="text" className='form-control text-center' >{quentity}</div>
+                                <button type='button' onClick={handleIncrement} className='input-group-text'>+</button>
                             </div>
                         </div>
 
                         <div className="col-md-3 mt-3">
-                            <button type='button' className='btn btn-primary w-100'>Add to Cart</button>
+                            <button type='button' onClick={submitAddToCart} className='btn btn-primary w-100'>Add to Cart</button>
                         </div>
                     </div>
                 </div>
         }
         else {
             available_stock =
-            <div>
-                <label className='btn-sm btn-danger px-4 mt-2'>Out of Stock</label>
-            </div>
+                <div>
+                    <label className='btn-sm btn-danger px-4 mt-2'>Out of Stock</label>
+                </div>
         }
     }
 
