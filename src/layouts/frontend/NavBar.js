@@ -76,6 +76,10 @@ const NavBar = () => {
                                 <Link className="nav-link " aria-current="page" to="/collections">Collection</Link>
                             </li>
 
+                            <li className="nav-item">
+                                <Link className="nav-link " aria-current="page" to="/cart">Cart</Link>
+                            </li>
+
                             {/** login register logout */}
                             {AuthButtons}
 

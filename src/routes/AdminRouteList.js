@@ -3,6 +3,7 @@ import AddCategory from '../components/admin/Category/AddCategory';
 import EditCategory from '../components/admin/Category/EditCategory';
 import ViewCategory from '../components/admin/Category/ViewCategory';
 import Dashboard from '../components/admin/Dashboard';
+import Order from '../components/admin/Order/Order';
 import AddProduct from '../components/admin/Product/AddProduct';
 import EditProduct from '../components/admin/Product/EditProduct';
 import ViewProduct from '../components/admin/Product/ViewProduct';
@@ -23,6 +24,7 @@ const AdminRouteList =
     { path:'/admin/edit-product/:id', exact:true, name:'EditProduct', component:EditProduct },
     //Profile Pages
     { path:'/admin/profile', exact:true, name:'Profile', component:Profile },
+    { path:'/admin/orders', exact:true, name:'Order', component:Order },
    
 ];
 

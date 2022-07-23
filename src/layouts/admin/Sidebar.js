@@ -51,6 +51,12 @@ const Sidebar = () => {
                             Profile
                         </Link>
 
+                        <Link className="nav-link" to="/admin/orders">
+                            <div className="sb-nav-link-icon"><i className="fas fa-tachometer-alt"></i></div>
+                            Orders
+                        </Link>
+
+
                         <div className="sb-sidenav-menu-heading">Interface</div>
 
                         <Link className="nav-link collapsed" to="#" data-bs-toggle="collapse" data-bs-target="#collapsePages" aria-expanded="false" aria-controls="collapsePages">

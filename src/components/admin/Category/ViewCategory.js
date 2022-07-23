@@ -26,6 +26,29 @@ const ViewCategory = () => {
 
   }, []);
 
+  //===========Delete Data By Id=====================
+  const deleteCategory = (e, id) => {
+    e.preventDefault();
+
+    const thisClicked = e.currentTarget;
+    thisClicked.innerText = "Deleting";
+
+    axios.delete(`/api/delete-category/${id}`).then(res => {
+      if (res.data.status === 200) {
+        swal("Success", res.data.message, "success");
+        thisClicked.closest("tr").remove();
+      }
+      else if (res.data.status === 404) {
+        swal("Error", res.data.message, "error");
+        thisClicked.innerText = "Delete";
+      }
+      setLoading(false);
+    });
+  }
+
+
+
+
   var viewcategory_HtmlTable = "";
   if (loading) {
     return <h4>Loading Category...</h4>
@@ -40,31 +63,12 @@ const ViewCategory = () => {
             <td>{item.slug}</td>
             <td>{item.status}</td>
             <td><Link to={`edit-category/${item.id}`} className="btn btn-success btn-sm ">Edit</Link></td>
-            <td> <button type='button' onClick={(e)=>deleteCategory(e, item.id)} className='btn btn-danger btn-sm'>Delete</button> </td>
+            <td> <button type='button' onClick={(e) => deleteCategory(e, item.id)} className='btn btn-danger btn-sm'>Delete</button> </td>
           </tr>
         )
       })
   }
 
-  //===========Delete Data By Id=====================
-  const deleteCategory = (e, id) => {
-    e.preventDefault();
-
-    const thisClicked = e.currentTarget;
-    thisClicked.innerText = "Deleting";
-
-    axios.delete(`/api/delete-category/${id}`).then(res => {
-      if (res.data.status === 200) {
-        swal("Success", res.data.message, "success");
-        thisClicked.closest("tr").remove();
-      }
-      else if (res.data.status === 404) {
-          swal("Error", res.data.message, "error");
-          thisClicked.innerText = "Delete";
-      }
-      setLoading(false);
-  });
-  }
 
 
   return (
@@ -84,7 +88,7 @@ const ViewCategory = () => {
           </div>
 
           <div className="card-body ">
-            <table class="table table-bordered table-striped table-hover">
+            <table className="table table-bordered table-striped table-hover">
               <thead className=''>
                 <tr>
                   <th scope="col">#ID</th>

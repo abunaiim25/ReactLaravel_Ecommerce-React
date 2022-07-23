@@ -22,6 +22,7 @@ const ViewProduct = () => {
       }
     });
   }, []);
+
   //onClick={(e)=>deleteProduct(e, item.id)} 
   var viewproduct_display = "";
   if (loading) {
@@ -45,7 +46,7 @@ const ViewProduct = () => {
             <td>{item.category.name}</td> {/** Join category -> category_id*/}
             <td>{item.name}</td>
             <td>{item.selling_price}</td>
-            <td>{productStatus}</td> {/** Status */}
+            <td>{productStatus}</td> {/** Status */}{/** {item.status === 1 ? 'Active':'Inactive} */}
             <td>
               <img src={`${PUBLIC_URL}/${item.image}`} width="50px" alt={item.name} />
             </td>

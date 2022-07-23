@@ -8,7 +8,7 @@ import { PUBLIC_URL } from '../../../PUBLIC_URL';
 
 const ProductDetails = (props) => {
 
-    document.title = "Product List";
+    document.title = "Product Details";
 
     const history = useHistory();
     const [loading, setLoading] = useState(true);//loading
@@ -43,7 +43,7 @@ const ProductDetails = (props) => {
     }, [props.match.params.category, props.match.params.product, history]);
 
 
-    //quentity
+    //quantity
     const handleDecrement = () => {
         if (quentity > 1) {
             setQuentity(prevCount => prevCount - 1);
