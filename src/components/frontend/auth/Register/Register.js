@@ -32,6 +32,7 @@ const Register = () => {
       name: registerInput.name,
       email: registerInput.email,
       password: registerInput.password,
+      password_confirmation: registerInput.password_confirmation,
     }
 
     // post using laravel api
@@ -82,6 +83,13 @@ const Register = () => {
                     <input type="password" name='password' onChange={handleInput} value={registerInput.password} className='form-control' />
                     <span>{registerInput.error_list.password}</span>
                   </div>
+
+                  <div className="form-group mb-3">
+                    <label htmlFor="">Confirm Password</label>
+                    <input type="password" name='password_confirmation' onChange={handleInput} value={registerInput.password_confirmation} className='form-control' />
+                    <span>{registerInput.error_list.password}</span>
+                  </div>
+
                   <button type='submit' className='btn btn-primary'>Register</button>
                 </form>
 

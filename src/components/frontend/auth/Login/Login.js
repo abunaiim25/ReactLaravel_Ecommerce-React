@@ -4,6 +4,7 @@ import { useHistory } from 'react-router-dom';
 import axios from 'axios';
 import swal from 'sweetalert';
 import "./Login.css";
+import { Link } from 'react-router-dom';
 import NavBar from '../../../../layouts/frontend/NavBar';
 
 const Login = () => {
@@ -82,6 +83,8 @@ const Login = () => {
                     <span>{loginInput.error_list.password}</span>
                   </div>
 
+                  <Link className='float-end' to="/forget-password">Forget Password?</Link>
+                  <br />
                   <button type='submit' className='btn btn-primary'>Login</button>
                 </form>
 

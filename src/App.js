@@ -10,6 +10,8 @@ import Page404 from './components/errors/Page404';
 import FrontendPublicRoute from './routes_items/FrontendPublicRoute';
 import Home from './components/frontend/Home';
 import Skeleton, { SkeletonTheme } from 'react-loading-skeleton'//loading
+import ForgetPassword from './components/frontend/auth/ForgetPassword';
+import ResetPassword from './components/frontend/auth/ResetPassword';
 
 
 //===================== (Laravel API)===============================
@@ -36,7 +38,10 @@ function App() {
           {/** Auth */}
           <Route exact path={"/login"} component={Login} />
           <Route exact path={"/register"} component={Register} />
-          {/** Error */}
+          <Route exact path={"/forget-password"} component={ForgetPassword} />
+          <Route exact path={"/reset-password/:id"} component={ResetPassword} />
+         
+         {/** Error */}
           <Route path={"/403"} component={Page403} />
           <Route path={"/404"} component={Page404} />
 
