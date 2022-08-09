@@ -64,7 +64,7 @@ const ForgetPassword = () => {
                   <form onSubmit={formSubmit}>
                     <div className="form-group mb-3">
                       <label htmlFor="">Email: </label>
-                      <input type="email" name='email' onChange={handleInput}  value={Input.email}className='form-control'  />
+                      <input type="email" name='email' onChange={handleInput}  value={Input.email}className='form-control' required />
                     </div>
 
                     <button type='submit' className='btn btn-primary'>Submit</button>

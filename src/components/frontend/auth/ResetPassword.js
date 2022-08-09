@@ -63,22 +63,22 @@ const ResetPassword = () => {
                   <form onSubmit={formSubmit}>
                   <div className="form-group mb-3">
                       <label htmlFor="">Token <small className='text-success'>(Checked on your email)</small>: </label>
-                      <input type="text" name='token' onChange={handleInput}  value={Input.token}className='form-control'  />
+                      <input type="text" name='token' onChange={handleInput}  value={Input.token}className='form-control' required />
                     </div>
 
                     <div className="form-group mb-3">
                       <label htmlFor="">Email Address: </label>
-                      <input type="email" name='email' onChange={handleInput}  value={Input.email}className='form-control'  />
+                      <input type="email" name='email' onChange={handleInput}  value={Input.email}className='form-control'  required/>
                     </div>
 
                     <div className="form-group mb-3">
                       <label htmlFor="">New Password: </label>
-                      <input type="password" name='password' onChange={handleInput}  value={Input.password}className='form-control'  />
+                      <input type="password" name='password' onChange={handleInput}  value={Input.password}className='form-control' required />
                     </div>
 
                     <div className="form-group mb-3">
                       <label htmlFor="">Confirm Password: </label>
-                      <input type="password" name='password_confirmation' onChange={handleInput}  value={Input.password_confirmation}className='form-control'  />
+                      <input type="password" name='password_confirmation' onChange={handleInput}  value={Input.password_confirmation}className='form-control'  required/>
                     </div>
 
                     <button type='submit' className='btn btn-primary'>Submit</button>
